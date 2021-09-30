@@ -1,0 +1,2 @@
+# pruebasDiversas
+My study repository
