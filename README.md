@@ -5,6 +5,7 @@ Vue.js desde CDN
 Vue.js desde CLI con instalación
 Pruebas de creación de proyecto
 Implementación con Bootstrap
-Pruebas con Vuex
+Pruebas con Vuex 
+y otras cositas de desarrollo web :)
 
 
