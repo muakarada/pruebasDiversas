@@ -2,14 +2,14 @@
 
 //var globales
 const formUI = document.querySelector('#formula');
-const listaActUI = document.getElementById('listaActividades');
+const listaActUI = document.getElementById('listaActividades');//NO se necesita #
 let arrayAc = [];
 
 //funciones
 const CrearItem = (compra) =>{
     let item = {
         compra: compra,
-        estado: false,
+        estado: false
     }
     arrayAc.push(item);
     return item;
@@ -17,7 +17,6 @@ const CrearItem = (compra) =>{
 
 const GuardarData = (compra) =>{
     localStorage.setItem('lista', JSON.stringify(arrayAc));
-
     LeerData();
 }
 
@@ -48,12 +47,11 @@ const LeerData = () => {
 const EliminarLista = (compra) => {
     let indexArray;
     arrayAc.forEach((dato, index) =>{
-    if(dato.compra === compra){
+        if(dato.compra === compra){
             indexArray = index;
         }
     });
     arrayAc.splice(indexArray,1);
-
     GuardarData();
 }
 
@@ -61,9 +59,7 @@ const EditarLista = (compra) => {
     let indexArray = arrayAc.findIndex((dato) => dato.compra === 
     compra);
     console.log(arrayAc[indexArray]);
-
     arrayAc[indexArray].estado = true;
-
     GuardarData();
 }
 
@@ -73,7 +69,6 @@ formUI.addEventListener('submit', (e) => {
     let compraUI = document.querySelector('#compra').value;
     CrearItem(compraUI);
     GuardarData();
-
     formUI.reset();
 });
 
@@ -84,7 +79,7 @@ listaActUI.addEventListener('click', (e) => {
     e.preventDefault();
 
     if(e.target.innerHTML === 'done' || e.target.innerHTML === 'delete'){
-        let texto = e.path[1].childNodes[2].innerHTML;
+        let texto = e.path[2].childNodes[1].innerHTML; //busca la b de bold
         if(e.target.innerHTML === 'delete'){
             EliminarLista(texto);
         }
